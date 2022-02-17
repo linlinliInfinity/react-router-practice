@@ -6,9 +6,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  NavLink,
   useParams,
-  useLocation,
   useNavigate,
 } from "react-router-dom";
 
