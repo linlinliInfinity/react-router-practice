@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { fetchCountriesImplicitPromise } from "../api/functions";
+
 
 import {
   BrowserRouter,
@@ -11,6 +11,24 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+
+export const fetchCountriesImplicitPromise = () =>
+	fetch("https://api.covid19api.com/countries").then(result => result.json());
+
+// Explicit Promise
+export const fetchCountriesExplicitPromise = () =>
+	new Promise((resolve, reject) => {
+		fetch("https://api.covid19api.com/countries")
+			.then(result => result.json())
+			.then(data => resolve(data))
+			.catch(error => reject(error));
+	});
+
+// Async/Await
+export const fetchCountriesAsync = async () => {
+	const result = await fetch("https://api.covid19api.com/countries");
+	return result.json();
+};
 
 const Post = () => {
   const { id } = useParams();
